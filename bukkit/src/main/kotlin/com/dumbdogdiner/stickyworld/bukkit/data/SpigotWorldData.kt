@@ -1,8 +1,8 @@
-package com.dumbdogdiner.stickyworld.bukkit.world
+package com.dumbdogdiner.stickyworld.bukkit.data
 
 import org.bukkit.configuration.ConfigurationSection
 
-data class SkWorldData(
+data class SpigotWorldData(
 	var verbose: Boolean,
 	var viewDistance: Int,
 	var mergeRadius: MutableMap<MergeType, Double>,
@@ -105,8 +105,8 @@ data class SkWorldData(
 		/**
 		 * Get the default spigot world data settings.
 		 */
-		fun getDefault(): SkWorldData {
-			return SkWorldData(
+		fun getDefault(): SpigotWorldData {
+			return SpigotWorldData(
 				verbose = true,
 				viewDistance = 10,
 				mergeRadius = mutableMapOf(
@@ -178,8 +178,8 @@ data class SkWorldData(
 		/**
 		 * Deserialize a configuration section into world data.
 		 */
-		fun deserialize(section: ConfigurationSection): SkWorldData {
-			val data = SkWorldData.getDefault()
+		fun deserialize(section: ConfigurationSection): SpigotWorldData {
+			val data = getDefault()
 
 			// hacky let setting because ConfigurationSection never returns null
 			// i would love to loop over Constants.SPIGOT_WORLD_CONFIG_KEYS but i don't think i can.

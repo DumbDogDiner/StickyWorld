@@ -3,13 +3,14 @@ package com.dumbdogdiner.stickyworld.bukkit.world
 import com.dumbdogdiner.stickyworld.api.world.WorldData
 import com.dumbdogdiner.stickyworld.api.world.WorldProvider
 import com.dumbdogdiner.stickyworld.bukkit.WithPlugin
+import com.dumbdogdiner.stickyworld.bukkit.data.SpigotWorldData
 import com.dumbdogdiner.stickyworld.bukkit.util.Constants
 import org.bukkit.configuration.file.YamlConfiguration
 import java.io.File
 import java.util.UUID
 
 class SkWorldProvider : WithPlugin, WorldProvider {
-	private val worldCache = mutableMapOf<String, SkWorldData>()
+	private val worldCache = mutableMapOf<String, SpigotWorldData>()
 	private val worldConfig = YamlConfiguration()
 
 	/**
@@ -65,7 +66,7 @@ class SkWorldProvider : WithPlugin, WorldProvider {
 			?: return true
 
 		spigotWorlds.forEach {
-			worldCache[it] = SkWorldData.deserialize(spigotConfig.getConfigurationSection("world-settings")!!.getConfigurationSection(it)!!)
+			worldCache[it] = SpigotWorldData.deserialize(spigotConfig.getConfigurationSection("world-settings")!!.getConfigurationSection(it)!!)
 		}
 
 		return true
