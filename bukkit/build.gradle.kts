@@ -25,7 +25,13 @@ dependencies {
 
 spotless {
     kotlin {
-        ktlint()
+        prettier(mapOf(
+            "prettier" to "2.2.1",
+            "prettier-plugin-kotlin" to "2.0.0"
+        )).config(mapOf(
+            "parser" to "kotlin",
+            "useTabs" to true
+        ))
         licenseHeaderFile(rootProject.file("LICENSE_HEADER"))
     }
 }
@@ -40,8 +46,8 @@ tasks {
     }
 
     spigot {
-        name = "myawesomeplugin"
-        authors = mutableListOf("Some soft boy <3")
+        name = "StickyWorld"
+        authors = mutableListOf("SkyezerFox")
         apiVersion = "1.16"
         softDepends = mutableListOf()
     }
